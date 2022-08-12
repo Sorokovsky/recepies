@@ -33,7 +33,7 @@ class UsersService {
             const createdUser:User = await this.userModel.create({...createUser, password: hashedPassword});
             return createdUser;
         }catch(e:unknown){            
-        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST);
+            throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST);
         }
     }
 }

@@ -16,6 +16,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const user_schema_1 = require("../schemas/user.schema");
+const bcrypt_1 = require("bcrypt");
 let UsersService = class UsersService {
     constructor(userModel) {
         this.userModel = userModel;
@@ -44,7 +45,8 @@ let UsersService = class UsersService {
     }
     async createUser(createUser) {
         try {
-            const createdUser = await this.userModel.create(createUser);
+            const hashedPassword = await (0, bcrypt_1.hash)(createUser.password, 4);
+            const createdUser = await this.userModel.create(Object.assign(Object.assign({}, createUser), { password: hashedPassword }));
             return createdUser;
         }
         catch (e) {

@@ -1,25 +1,25 @@
 import { Body, Controller, Delete, Get, Post ,HttpException, Param } from "@nestjs/common";
-import * as mongoose from "mongoose";
+import { ObjectId } from "mongoose";
 import { User } from "src/schemas/user.schema";
 import createUserDTO from "./dto/create-user.dto";
 import UsersService from "./users.service";
-@Controller()
+@Controller('/users')
 class UsersController{
     constructor(private usersService: UsersService){}
-    @Get("/users")
+    @Get()
     getAll():Promise<User[]>{
         return this.usersService.getAll();
     }
-    @Get("/users/:id")
-    getOne(@Param('id') id:mongoose.Schema.Types.ObjectId):Promise<User | HttpException>{
+    @Get(":id")
+    getOne(@Param('id') id:ObjectId):Promise<User | HttpException>{
         return this.usersService.getOne(id);
     }
-    @Post("/users")
+    @Post()
     createUser(@Body() body:createUserDTO):Promise<User|HttpException>{
         return this.usersService.createUser(body);
     }
-    @Delete("/users/:id")
-    delete(@Param('id') id:mongoose.Schema.Types.ObjectId):Promise<User | HttpException>{
+    @Delete(":id")
+    delete(@Param('id') id:ObjectId):Promise<User | HttpException>{
         return this.usersService.delete(id);
     }
 }

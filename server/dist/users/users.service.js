@@ -38,7 +38,7 @@ let UsersService = class UsersService {
             const deletedUser = await this.userModel.findByIdAndDelete(id);
             return deletedUser;
         }
-        catch (e) {
+        catch (error) {
             throw new common_1.HttpException("Not found", 404);
         }
     }

@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const mongoose_1 = require("mongoose");
+const mongoose = require("mongoose");
 const users_service_1 = require("./users.service");
 let UsersController = class UsersController {
     constructor(usersService) {
@@ -42,7 +42,7 @@ __decorate([
     (0, common_1.Get)("/users/:id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [mongoose_1.default.Types.ObjectId]),
+    __metadata("design:paramtypes", [mongoose.Schema.Types.ObjectId]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getOne", null);
 __decorate([
@@ -56,7 +56,7 @@ __decorate([
     (0, common_1.Delete)("/users/:id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [mongoose_1.default.Types.ObjectId]),
+    __metadata("design:paramtypes", [mongoose.Schema.Types.ObjectId]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "delete", null);
 UsersController = __decorate([

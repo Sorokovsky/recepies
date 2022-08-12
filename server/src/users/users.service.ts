@@ -1,6 +1,7 @@
 import { Body, HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import mongoose, { Model } from "mongoose";
+import { Model } from "mongoose";
+import * as mongoose from "mongoose";
 import { User, UserDocument } from "src/schemas/user.schema";
 import createUserDTO from "./dto/create-user.dto";
 @Injectable()
@@ -10,7 +11,7 @@ class UsersService {
         const users:User[] = await this.userModel.find();
         return users;
     }
-    async getOne(id:mongoose.Types.ObjectId):Promise<User | HttpException>{
+    async getOne(id:mongoose.Schema.Types.ObjectId):Promise<User | HttpException>{
         try{
             const user:User = await this.userModel.findById(id);
             return user;
@@ -18,7 +19,7 @@ class UsersService {
             throw new HttpException("Not found", 404);
         }
     }
-    async delete(id:mongoose.Types.ObjectId):Promise<User | HttpException>{
+    async delete(id:mongoose.Schema.Types.ObjectId):Promise<User | HttpException>{
         try{
             const deletedUser:User = await this.userModel.findByIdAndDelete(id);
             return deletedUser;

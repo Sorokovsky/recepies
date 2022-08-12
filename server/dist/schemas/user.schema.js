@@ -20,6 +20,14 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true, unique: false }),
     __metadata("design:type", String)
+], User.prototype, "surname", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true, unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true, unique: false }),
+    __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 User = __decorate([
     (0, mongoose_1.Schema)()

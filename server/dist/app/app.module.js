@@ -13,7 +13,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.default, mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/recepies')]
+        imports: [users_module_1.default, mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/recepies', { autoIndex: true })]
     })
 ], AppModule);
 exports.default = AppModule;

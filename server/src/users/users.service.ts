@@ -15,7 +15,7 @@ class UsersService {
             const user:User = await this.userModel.findById(id);
             return user;
         }catch(e:unknown){
-            throw new HttpException("Not found", 404);
+            throw new HttpException("Not found", HttpStatus.NOT_FOUND);
         }
     }
     async delete(id:ObjectId):Promise<User | HttpException>{
@@ -23,7 +23,7 @@ class UsersService {
             const deletedUser:User = await this.userModel.findByIdAndDelete(id);
             return deletedUser;
         }catch(error:unknown){
-            throw new HttpException("Not found", 404);
+            throw new HttpException("Not found", HttpStatus.NOT_FOUND);
         }
     }
     async createUser(@Body() createUser:createUserDTO):Promise<User | HttpException>{

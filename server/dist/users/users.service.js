@@ -30,7 +30,7 @@ let UsersService = class UsersService {
             return user;
         }
         catch (e) {
-            throw new common_1.HttpException("Not found", 404);
+            throw new common_1.HttpException("Not found", common_1.HttpStatus.NOT_FOUND);
         }
     }
     async delete(id) {
@@ -39,7 +39,7 @@ let UsersService = class UsersService {
             return deletedUser;
         }
         catch (error) {
-            throw new common_1.HttpException("Not found", 404);
+            throw new common_1.HttpException("Not found", common_1.HttpStatus.NOT_FOUND);
         }
     }
     async createUser(createUser) {
